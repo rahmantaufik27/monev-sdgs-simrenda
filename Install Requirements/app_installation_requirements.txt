@@ -1,0 +1,27 @@
+1 SQLEXPR_x64_ENU.exe
+2 SQLManagementStudio_x64_ENU.exe
+3 jre-8u91-windows-x64.exe
+4 msodbcsql.msi
+5 eclipse-inst-win64.exe
+6 sqljdbc_4.0.2206.100_enu.exe
+7 documents-export-2016-07-14
+7 documents-export-2016-07-14.zip
+8 Git-2.9.2-64-bit.exe
+9 global.php
+10 vendor_baru.zip
+11 Composer-Setup.exe
+
+Optional
+Chrome 51.0 (64-bit).exe
+Hide.me-Setup-2.1.1.exe
+Microsoft JDBC Driver 4.0 for SQL Server
+Sublime Text 2.0.2a x64 Setup.exe
+php5.dll
+
+Guide
+1 SQLEXPR_x64_ENU:
+https://medium.com/@dionajie/how-to-install-ms-sql-server-2008-r2-f831eb63c557#.m2eebqx1e
+2 SQLManagementStudio_x64_ENU:
+https://blogs.msdn.microsoft.com/bethmassi/2011/02/18/step-by-step-installing-sql-server-management-studio-2008-express-after-visual-studio-2010/
+Simrenda:
+https://medium.com/@dionajie/setting-simrenda-ae380862c2aa#.2eltz58ry

@@ -1,0 +1,62 @@
+<link rel="stylesheet" href="<?php echo $this->basePath('js/plugins/data-tables/css/jquery.dataTables.min.css') ?>">
+<script type="text/javascript" src="<?php echo $this->basePath('js/plugins/data-tables/js/jquery.dataTables.min.js') ?>"></script>
+
+<div class ="row" >
+    <div class="col s12 m12 112">
+        <div class ="toolbar-buttons">
+            <div class="row">
+                <div class="input-field col right">
+                    <a href="<?= $this->basePath('monevsdgs/coding/laporan') ?>" class="btn green waves-effect waves-light">
+                        <i class="mdi-action-done-all right"></i>
+                        Laporan
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="col s12 m12 l12">
+    <table class="striped" id="data_table">
+        <thead>
+            <tr>
+                <th data-field="no">No.</th>
+                <th data-field="name">Tujuan</th>
+                <th data-field="indikator_provinsi">Indikator Provinsi</th>
+                <th data-field="nama_indikator_kota">Indikator Kota</th>
+                <th data-field="aksi">Aksi</th>
+            </tr>
+        </thead>
+        <tbody> 
+           <?php
+            $i = 1;
+            foreach ($data as $row) {
+                ?>
+                <tr>
+                    <td><?php echo $this->escapeHtml($i); ?></td>
+                    <td><?php echo $this->escapeHtml($row->nama_tujuan); ?></td>
+                    <td><?php echo $this->escapeHtml($row->nama_indikator_provinsi); ?></td>
+                    <td><?php echo $this->escapeHtml($row->nama_indikator_kota); ?></td>
+                    <td>
+                        <a href="<?php echo $this->basePath('monevsdgs/coding/kegiatan?id_indikator_kota=' . $row->id_indikator_kota); ?>" class="btn orange waves-effect waves-light" title="Edit"><i class="mdi-editor-mode-edit"></i></a>
+                    </td>
+                    <?php
+                    $i++;
+                }
+                ?>
+        </tbody>
+    </table>
+</div>
+<script>
+    $(document).ready(function() {
+        $('#data_table').DataTable({
+            searching: true,
+            lengthChange: false
+        });
+        <?php
+            if (count($flash_message) > 0) foreach($flash_message as $msg){
+        ?>
+            Materialize.toast('<?=$msg?>', 2000);
+        <?php } ?>
+    });
+</script>

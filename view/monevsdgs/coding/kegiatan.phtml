@@ -1,0 +1,341 @@
+<link rel="stylesheet" href="<?php echo $this->basePath('js/plugins/data-tables/css/jquery.dataTables.min.css') ?>">
+<script type="text/javascript" src="<?php echo $this->basePath('js/plugins/data-tables/js/jquery.dataTables.min.js') ?>"></script>
+<style>
+    input[type=text]:disabled+label {
+        color: #9e9e9e;
+    }
+
+    input[type=text]:disabled{
+        color: inherit;
+        border-bottom: 1px solid #9e9e9e;
+    }
+
+    input[type=number]:disabled+label {
+        color: #9e9e9e;
+    }
+
+    input[type=number]:disabled{
+        color: inherit;
+        border-bottom: 1px solid #9e9e9e;
+    }
+</style>
+<script type="text/javascript">
+
+    var arr=[];
+
+    function loadcheck(e, id) {
+        if (e.checked == true) {
+            arr.push(id);
+        } else {
+            var index = -1;
+            for (var i = 0; i < arr.length; i++) {
+                if (id == arr[i]) {
+                    index = i;
+                    break;
+                }
+            }
+            if (index != -1) {
+                arr.splice(index, 1);
+            }
+        }
+        console.log(id);
+        var jsondatarekap = JSON.stringify(arr);
+        $("#id_kegiatan_renstra").val(jsondatarekap);
+    }
+
+</script>
+<div id="modal1" class="modal">    
+    <div id="containerpreloader" style="display: none; position:absolute; width: 100%; height: 100%; text-align: center;z-index: 99; background: rgba(0,0,0,0.2)">
+        <div class="preloader-wrapper active" style="margin-top: 140px">
+            <div class="spinner-layer spinner-red-only">
+                <div class="circle-clipper left">
+                    <div class="circle"></div>
+                </div>
+                <div class="gap-patch">
+                    <div class="circle"></div>
+                </div>
+                <div class="circle-clipper right">
+                    <div class="circle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-content">
+        <h5>Tambah Prioritas Masalah</h5>
+    </div>
+</div>
+<div class="row">
+    <div class="input-field col s12 m12 l12">
+            <input disabled="disabled" id="nama_tujuan" name="nama_tujuan" type="text" value="<?php echo $tujuan->nama_tujuan ?>" />
+            <!-- <p><?php echo $tujuan->nama_tujuan ?></p? -->
+            <label for="nama_tujuan">Tujuan</label>
+    </div>
+</div>
+<div class="row">
+    <div class="input-field col s12 m12 l12">
+            <input disabled="disabled" id="target_global" name="target_global" type="text" value="<?php echo $tujuan->target_global ?>"/>
+            <label for="target_global">Sasaran Global</label>
+    </div>
+</div>
+<div class="row">
+    <div class="input-field col s12 m12 l12">
+            <input disabled="disabled" id="target_nasional" name="target_nasional" type="text" value="<?php echo $tujuan->target_nasional ?>"/>
+            <label for="target_nasional">Sasaran Nasional</label>
+    </div>
+</div>
+<div class="row">
+    <div class="input-field col s12 m12 l12">
+            <input disabled="disabled" id="nama_indikator_provinsi" name="nama_indikator_provinsi" type="text" value="<?php echo $tujuan->nama_indikator_provinsi ?>"/>
+            <label for="nama_indikator_provinsi">Indikator Provinsi</label>
+    </div>
+</div>
+<div class="row">
+    <div class="input-field col s12 m12 l12">
+            <input disabled="disabled" id="nama_indikator_kota" name="nama_indikator_kota" type="text" value="<?php echo $tujuan->nama_indikator_kota ?>"/>
+            <label for="nama_indikator_kota">Indikator Kota</label>
+    </div>
+</div>
+<div class="row">
+    <div class="col s12 m12 l12">
+        <label for="nama_indikator_kota">Target Kota Cimahi</label>
+        <hr>
+    </div>
+</div>
+<div class="row">
+        <div class="input-field col s2 m2 l2">
+                <input disabled="disabled" id="kondisi_awal" name="kondisi_awal" type="text" value="<?php echo $tujuan->kondisi_awal ?>"/>
+                <label for="kondisi_awal">Baseline Tahun 2017</label>
+        </div>
+        <div class="input-field col s2 m2 l2">
+                <input disabled="disabled" id="t1" name="t1" type="text" value="<?php echo $tujuan->t1 ?>"/>
+                <label for="t1">2018</label>
+        </div>
+        <div class="input-field col s2 m2 l2">
+                <input disabled="disabled" id="t2" name="t2" type="text" value="<?php echo $tujuan->t2 ?>"/>
+                <label for="t2">2019</label>
+        </div>
+        <div class="input-field col s2 m2 l2">
+                <input disabled="disabled" id="t3" name="t3" type="text" value="<?php echo $tujuan->t3 ?>"/>
+                <label for="t3">2020</label>
+        </div>
+        <div class="input-field col s2 m2 l2">
+                <input disabled="disabled" id="t4" name="t4" type="text" value="<?php echo $tujuan->t4 ?>"/>
+                <label for="t4">2021</label>
+        </div>
+        <div class="input-field col s2 m2 l2">
+                <input disabled="disabled" id="t5" name="t5" type="text" value="<?php echo $tujuan->t5 ?>"/>
+                <label for="t5">2022</label>
+        </div>
+</div>
+<div class="row">
+    <div class="input-field col s12 m12 l12">
+            <input disabled="disabled" id="sumber_data" name="sumber_data" type="text" value="<?php echo $tujuan->sumber_data ?>"/>
+            <label for="sumber_data">Sumber</label>
+    </div>
+</div>
+<div class="row">
+    <div class="input-field col s12 m12 l12">
+            <input disabled="disabled" id="perangkat_daerah" name="perangkat_daerah" type="text" value="<?php echo $tujuan->perangkat_daerah ?>"/>
+            <label for="perangkat_daerah">Perangkat Daerah</label>
+    </div>
+</div>
+<div class="col s12 m12 l12">
+    <table class="striped" id="data_table2">
+        <thead>
+            <tr>
+                <th data-field="no" rowspan="2" colspan="1">No.</th>
+                <!-- <th data-field="indikator_kota" rowspan="2" colspan="1">Indikator Kota Cimahi</th> -->
+                <!-- <th data-field="dasar" rowspan="2" colspan="1">Baseline Tahun 2017</th>
+                <th data-field="target" rowspan="0" colspan="5">Target Kota Cimahi</th>
+                <th data-field="sumber_data" rowspan="2" colspan="1">Sumber</th>
+                <th data-field="perangkat_daerah" rowspan="2" colspan="1">Perangkat Daerah</th> -->
+                <th data-field="program" rowspan="2" colspan="1">Program</th>
+                <th data-field="kegiatan" rowspan="2" colspan="1">Kegiatan</th>
+                <th data-field="anggaran" rowspan="0" colspan="5">Anggaran</th>
+                <th data-field="aksi" rowspan="2" colspan="1">Aksi</th>
+                <!-- <th data-field="aksi" rowspan="2" colspan="1">Aksi</th> -->
+            </tr>
+            <tr>
+                <!-- <th data-field="t1">2018</th>
+                <th data-field="t2">2019</th>
+                <th data-field="t3">2020</th>
+                <th data-field="t4">2021</th>
+                <th data-field="t5">2022</th> -->
+                <th data-field="t1">2018</th>
+                <th data-field="t2">2019</th>
+                <th data-field="t3">2020</th>
+                <th data-field="t4">2021</th>
+                <th data-field="t5">2022</th>
+            </tr>
+        </thead>
+        <tbody> 
+            <?php
+            $i = 1;
+            foreach ($coding as $row) {
+                ?>
+                <tr>
+                    <td><?php echo $this->escapeHtml($i); ?></td>
+                    <!-- <td><?php echo $this->escapeHtml($row->nama_indikator_kota); ?></td> -->
+                    <!-- <td><?php echo $this->escapeHtml($row->kondisi_awal); ?></td>
+                    <td><?php echo $this->escapeHtml($row->t1); ?></td>
+                    <td><?php echo $this->escapeHtml($row->t2); ?></td>
+                    <td><?php echo $this->escapeHtml($row->t3); ?></td>
+                    <td><?php echo $this->escapeHtml($row->t4); ?></td>
+                    <td><?php echo $this->escapeHtml($row->t5); ?></td>
+                    <td><?php echo $this->escapeHtml($row->sumber_data); ?></td>
+                    <td><?php echo $this->escapeHtml($row->perangkat_daerah); ?></td> -->
+                    <td><?php echo $this->escapeHtml($row->nama_program); ?></td>
+                    <td><?php echo $this->escapeHtml($row->nama_kegiatan); ?></td>
+                    <td>Rp. <?php echo number_format($this->escapeHtml($row->rp_1),2,',','.'); ?></td>
+                    <td>Rp. <?php echo number_format($this->escapeHtml($row->rp_2),2,',','.'); ?></td>
+                    <td>Rp. <?php echo number_format($this->escapeHtml($row->rp_3),2,',','.'); ?></td>
+                    <td>Rp. <?php echo number_format($this->escapeHtml($row->rp_4),2,',','.'); ?></td>
+                    <td>Rp. <?php echo number_format($this->escapeHtml($row->rp_5),2,',','.'); ?></td>
+                    <!-- <td><?php echo $this->escapeHtml($row->rp_5); ?></td> -->
+                    <td>
+                        <button onclick="goErase('<?php echo $row->id_coding; ?>', '<?php echo $row->id_indikator_kota; ?>')" class="btn red waves-effect waves-light" title="Hapus">
+                            <i class="mdi-action-delete"></i>
+                        </button>
+                    </td>
+                    <!-- <td>
+                        <button onclick="goDetail('<?php echo $row->rp_1; ?>')" class="btn orange waves-effect waves-light" title="Edit">
+                            <i class="mdi-editor-mode-edit"></i>
+                        </button>
+                    </td> -->
+                    <?php
+                    $i++;
+                }
+                ?>
+        </tbody>
+    </table>
+</div>
+<br/>
+<br/>
+<div class="col s12 m12 l12">
+<hr>
+<h5 class="header2" style="color:#e65100">Kegiatan Renstra</h5>
+<hr>
+<form name="data_form" action="<?php echo $this->basePath('monevsdgs/coding/coding'); ?>" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="id_kegiatan_renstra" id="id_kegiatan_renstra" value="" />
+    <input type="hidden" name="id_indikator_kota" id="id_indikator_kota" value="<?php echo $tujuan->id_indikator_kota?>" />
+    <table class="striped" id="data_table">
+        <thead>
+            <tr>
+                <th data-field="no" rowspan="2" colspan="1">No.</th>
+                <th data-field="program" rowspan="2" colspan="1">Program</th>
+                <th data-field="kegiatan" rowspan="2" colspan="1">Kegiatan</th>
+                <th data-field="target" rowspan="2" colspan="1">Target</th>
+                <th data-field="uang" rowspan="0" colspan="5">Pagu Indikatif</th>
+                <th data-field="keterangan" rowspan="2" colspan="1">Keterangan</th>
+                <th data-field="perangkat_daerah" rowspan="2" colspan="1">Perangkat Daerah</th>
+                <th data-field="aksi" rowspan="2" colspan="1">Detail</th>
+                <th data-field="aksi" rowspan="2" colspan="1">Aksi</th>
+            </tr>
+            <tr>
+                <th data-field="t1">2018</th>
+                <th data-field="t2">2019</th>
+                <th data-field="t3">2020</th>
+                <th data-field="t4">2021</th>
+                <th data-field="t5">2022</th>
+            </tr>
+        </thead>
+        <tbody> 
+            <?php
+            $i = 1;
+            foreach ($data as $row) {
+                ?>
+                <tr>
+                    <td><?php echo $this->escapeHtml($i); ?></td>
+                    <td><?php echo $this->escapeHtml($row->nama_program); ?></td>
+                    <td><?php echo $this->escapeHtml($row->nama_kegiatan); ?></td>
+                    <td></td>
+                    <td>Rp. <?php echo number_format($this->escapeHtml($row->rp_1),2,',','.'); ?></td>
+                    <td>Rp. <?php echo number_format($this->escapeHtml($row->rp_2),2,',','.'); ?></td>
+                    <td>Rp. <?php echo number_format($this->escapeHtml($row->rp_3),2,',','.'); ?></td>
+                    <td>Rp. <?php echo number_format($this->escapeHtml($row->rp_4),2,',','.'); ?></td>
+                    <td>Rp. <?php echo number_format($this->escapeHtml($row->rp_5),2,',','.'); ?></td>
+                    <td><?php echo $this->escapeHtml($row->t1); ?><?php echo $this->escapeHtml($row->t2); ?><?php echo $this->escapeHtml($row->t3); ?><?php echo $this->escapeHtml($row->t4); ?><?php echo $this->escapeHtml($row->t5); ?></td>
+                    <td><?php echo $this->escapeHtml($row->nama_skpd); ?></td>
+                    <td>
+                        <div onclick="goDetail(<?php echo $row->rp_1; ?>)" class="btn orange waves-effect waves-light" title="detail" id="detail" name="detail">
+                            <i class="mdi-editor-mode-edit"></i>
+                        </div>
+                    </td>
+                    <td>
+                        <input onclick="loadcheck(this,<?php echo $row->id_kegiatan_renstra ?>)" id="filled-in-c<?= $i ?>" class="filled-in" type="checkbox" value="<?= $row->id_kegiatan_renstra ?>" />
+                        <label for="filled-in-c<?= $i ?>"></label>
+                    </td>
+                    <?php
+                    $i++;
+                }
+                ?>
+        </tbody>
+    </table>
+    <br />
+    <div class ="row" >
+        <div class="col s12 m12 112 right-align">
+            <button onclick="submit('<?php echo $tujuan->id_indikator_kota?>')" type="submit" name="" id="submit" class="btn waves-effect waves-light">
+                <i class="mdi-content-select-all right"></i>
+                Submit Aksi
+            </button>
+        </div>
+    </div>
+</form>
+</div>
+<div id="confirm_modal" class="modal">
+    <div class="modal-content teal lighten-4">
+        <p>Apakah anda yakin akan menghapus data ini?</p>
+    </div>
+    <div class="modal-footer teal white-text">
+        <button type="button" class="waves-effect waves-light btn-flat" id="ok">Ya</button>
+        <button type="button" class="modal-action modal-close waves-effect waves-light btn-flat" id="batal">Tidak</button>
+    </div>
+</div>
+<script>
+    $(document).ready(function() {
+        $('#data_table').DataTable({
+            searching: true,
+            lengthChange: false
+        });
+        <?php
+            if (count($flash_message) > 0) foreach($flash_message as $msg){
+        ?>
+            Materialize.toast('<?=$msg?>', 2000);
+        <?php } ?>
+        $('#data_table2').DataTable({
+            searching: true,
+            lengthChange: false
+        });
+        <?php
+            if (count($flash_message) > 0) foreach($flash_message as $msg){
+        ?>
+            Materialize.toast('<?=$msg?>', 2000);
+        <?php } ?>
+    });
+
+    function submit(id) {
+        $('#data_pass').submit();
+        // console.log(id);
+        // jQuery(':button').click(function () {
+        //     if (this.id == 'ok') {
+        //     window.location = '<?=$this->basePath('monevsdgs')?>'+'/monevsdgs/coding/kegiatan?id_indikator_kota=' + id;
+        //     }
+        // });
+    }
+
+    function goErase(id, name) {
+        $('#confirm_modal').openModal();
+        jQuery(':button').click(function () {
+            if (this.id == 'ok') {
+            window.location = '<?=$this->basePath('monevsdgs')?>'+'/coding/del?id_coding=' + id +'&id_indikator_kota=' + name;
+            }
+        });
+    }
+    function goDetail(t1) {
+        $('#modal1').openModal({ dismissible: false,complete: function() { 
+            clearform();
+        }});
+        console.log(t1);
+        $('#modal1').scrollTop(0);
+    }
+</script>

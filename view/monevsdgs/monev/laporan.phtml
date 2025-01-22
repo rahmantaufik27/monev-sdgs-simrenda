@@ -1,0 +1,95 @@
+<link rel="stylesheet" href="<?php echo $this->basePath('js/plugins/data-tables/css/jquery.dataTables.min.css') ?>">
+<script type="text/javascript" src="<?php echo $this->basePath('js/plugins/data-tables/js/jquery.dataTables.min.js') ?>"></script>
+<div class="col s12 m12 l12">
+    <table class="striped" id="data_table2">
+        <thead>
+            <tr>
+                <th data-field="no" rowspan="2" colspan="1">No.</th>
+                <th data-field="tujuan" rowspan="2" colspan="1">Tujuan SDGS</th>
+                <th data-field="global" rowspan="2" colspan="1">Target Global</th>
+                <th data-field="nasional" rowspan="2" colspan="1">Target Nasional</th>
+                <th data-field="indikator_provinsi" rowspan="2" colspan="1">Indikator Provinsi</th>
+                <th data-field="indikator_kota" rowspan="2" colspan="1">Indikator Kota Cimahi</th>
+                <th data-field="dasar" rowspan="2" colspan="1">Baseline Tahun 2017</th>
+                <th data-field="target" rowspan="0" colspan="5">Target Kota Cimahi</th>
+                <th data-field="sumber_data" rowspan="2" colspan="1">Sumber</th>
+                <th data-field="perangkat_daerah" rowspan="2" colspan="1">Perangkat Daerah</th>
+                <th data-field="program" rowspan="2" colspan="1">Program</th>
+                <th data-field="kegiatan" rowspan="2" colspan="1">Kegiatan</th>
+                <th data-field="anggaran" rowspan="0" colspan="5">Anggaran</th>
+                <th data-field="aksi" rowspan="2" colspan="1">Aksi</th>
+            </tr>
+            <tr>
+                <th data-field="t1">2018</th>
+                <th data-field="t2">2019</th>
+                <th data-field="t3">2020</th>
+                <th data-field="t4">2021</th>
+                <th data-field="t5">2022</th>
+                <th data-field="t1">2018</th>
+                <th data-field="t2">2019</th>
+                <th data-field="t3">2020</th>
+                <th data-field="t4">2021</th>
+                <th data-field="t5">2022</th>
+            </tr>
+        </thead>
+        <tbody> 
+            <?php
+            $i = 1;
+            foreach ($data as $row) {
+                ?>
+                <tr>
+                    <td><?php echo $this->escapeHtml($i); ?></td>
+                    <td><?php echo $this->escapeHtml($row->nama_tujuan); ?></td>
+                    <td><?php echo $this->escapeHtml($row->target_global); ?></td>
+                    <td><?php echo $this->escapeHtml($row->target_nasional); ?></td>
+                    <td><?php echo $this->escapeHtml($row->nama_indikator_provinsi); ?></td>
+                    <td><?php echo $this->escapeHtml($row->nama_indikator_kota); ?></td>
+                    <td><?php echo $this->escapeHtml($row->kondisi_awal); ?></td>
+                    <td><?php echo $this->escapeHtml($row->t1); ?></td>
+                    <td><?php echo $this->escapeHtml($row->t2); ?></td>
+                    <td><?php echo $this->escapeHtml($row->t3); ?></td>
+                    <td><?php echo $this->escapeHtml($row->t4); ?></td>
+                    <td><?php echo $this->escapeHtml($row->t5); ?></td>
+                    <td><?php echo $this->escapeHtml($row->sumber_data); ?></td>
+                    <td><?php echo $this->escapeHtml($row->perangkat_daerah); ?></td>
+                    <td><?php echo $this->escapeHtml($row->nama_program); ?></td>
+                    <td><?php echo $this->escapeHtml($row->nama_kegiatan); ?></td>
+                    <td><?php echo $this->escapeHtml($row->rp_1); ?></td>
+                    <td><?php echo $this->escapeHtml($row->rp_2); ?></td>
+                    <td><?php echo $this->escapeHtml($row->rp_3); ?></td>
+                    <td><?php echo $this->escapeHtml($row->rp_4); ?></td>
+                    <td><?php echo $this->escapeHtml($row->rp_5); ?></td>
+                    <td>
+                        <button onclick="goErase('<?php echo $row->id_coding; ?>', '<?php echo $row->id_indikator_kota; ?>')" class="btn red waves-effect waves-light" title="Hapus">
+                            <i class="mdi-action-delete"></i>
+                        </button>
+                    </td>
+                    <?php
+                    $i++;
+                }
+                ?>
+        </tbody>
+    </table>
+</div>
+<script>
+    $(document).ready(function() {
+        $('#data_table').DataTable({
+            searching: true,
+            lengthChange: false
+        });
+        <?php
+            if (count($flash_message) > 0) foreach($flash_message as $msg){
+        ?>
+            Materialize.toast('<?=$msg?>', 2000);
+        <?php } ?>
+        $('#data_table2').DataTable({
+            searching: true,
+            lengthChange: false
+        });
+        <?php
+            if (count($flash_message) > 0) foreach($flash_message as $msg){
+        ?>
+            Materialize.toast('<?=$msg?>', 2000);
+        <?php } ?>
+    });
+</script>
